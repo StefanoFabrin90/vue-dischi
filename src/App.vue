@@ -5,15 +5,20 @@
 
     <!-- main -->
     <main>
-      <!-- section-card -->
-      <sectionCard />
+      <Sectioncard />
     </main>
+    
+
+
+    
+    
+    
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue';
-import sectionCard from '@/components/sectionCard.vue';
+import Sectioncard from '@/components/Sectioncard.vue';
 
 
 
@@ -21,7 +26,7 @@ export default {
   name: 'App',
   components: {
     Header,
-    sectionCard,
+    Sectioncard,
   }
 }
 </script>
