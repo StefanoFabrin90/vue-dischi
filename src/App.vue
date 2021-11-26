@@ -5,7 +5,7 @@
 
     <!-- main -->
     <main>
-      <Sectioncard  :ListArtist="CardList"/>
+      <Sectioncard  :ListArtist="filteredListMusic"/>
     </main>
     
 
@@ -30,14 +30,26 @@ export default {
   data() {
       return {
         CardList: null,
+        searchGenre: '',
       };
-    },
+  },
 
-    created() {
+  computed: {
+    filteredListMusic() {
+      if(this.searchGenre === '') {
+        return this.CardList;
+      }
+
+      return this.CardList.filter(item => {
+        return item.genre.includes(this.searchGenre)
+      });
+    },
+  },
+  created() {
       this.getCardList();
-    },
+  },
 
-    methods: {
+  methods: {
       getCardList () {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
 
@@ -49,10 +61,11 @@ export default {
         .catch (err => console.log(err));
       },
 
-      searchMusic() {
-      console.log('emit evento');
+      searchMusic(value) {
+        console.log(value);
+        this.searchGenre = value;
       }
-    },
+  },
 }
 </script>
 
