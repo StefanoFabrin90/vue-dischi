@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-if="CardList !== null" class="row">
-      <div class="col-3 Listcard" v-for="(card, index) in CardList" :key="`card-${index}`">
+    <div v-if="ListArtist !== null" class="row">
+      <div class="col-3 Listcard" v-for="(card, index) in ListArtist" :key="`card-${index}`">
         <!-- Card -->
         <Card 
           :image="card.poster"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 import Card from '@/components/Card.vue'
 
 export default {
@@ -25,29 +25,11 @@ export default {
     components: {
       Card,
     },
-
-    data() {
-      return {
-        CardList: null,
-      };
-    },
-
-    created() {
-      this.getCardList();
-    },
-
-    methods: {
-      getCardList () {
-        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-
-        .then(result => {
-          console.log(result.data.response);
-          this.CardList = result.data.response;
-        })
-
-        .catch (err => console.log(err));
-      }
+    props: {
+      ListArtist: Array
     }
+
+    
 }
 </script>
 

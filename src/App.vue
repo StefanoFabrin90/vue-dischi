@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <!-- header -->
-    <Header />
+    <Header  @performSearch="searchMusic"/>
 
     <!-- main -->
     <main>
-      <Sectioncard />
+      <Sectioncard  :ListArtist="CardList"/>
     </main>
     
 
@@ -19,15 +19,40 @@
 <script>
 import Header from '@/components/Header.vue';
 import Sectioncard from '@/components/Sectioncard.vue';
-
-
+import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
     Header,
     Sectioncard,
-  }
+  },
+  data() {
+      return {
+        CardList: null,
+      };
+    },
+
+    created() {
+      this.getCardList();
+    },
+
+    methods: {
+      getCardList () {
+        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+
+        .then(result => {
+          // console.log(result.data.response);
+          this.CardList = result.data.response;
+        })
+
+        .catch (err => console.log(err));
+      },
+
+      searchMusic() {
+      console.log('emit evento');
+      }
+    },
 }
 </script>
 
