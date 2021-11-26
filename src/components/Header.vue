@@ -3,8 +3,9 @@
         <a class="navbar-brand" href="#">
             <img src="../assets/logo copia.png" alt="" width="45" height="">
         </a>
+        <span>Select Type of Music</span>
         <select 
-            class="select" 
+            class="select"
             aria-label="Default select example"
             v-model="searchGenre"
             @change="$emit('performSearch', searchGenre)"
@@ -40,6 +41,12 @@ export default {
 
     img {
        border-radius: 50%; 
+    }
+
+    span {
+        background-color: #2e3a46;
+        font-size: 18px;
+        text-transform: uppercase;
     }
 
     .select {

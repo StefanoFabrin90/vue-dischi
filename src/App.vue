@@ -36,7 +36,7 @@ export default {
 
   computed: {
     filteredListMusic() {
-      if(this.searchGenre === '') {
+      if(this.searchGenre === '' || this.searchGenre === 'All Music') {
         return this.CardList;
       }
 
